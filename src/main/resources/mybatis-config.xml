@@ -2,7 +2,7 @@
 <!DOCTYPE configuration  PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<package name="com.scalples.domain" />
+		<package name="com.scalples.fountain.domain" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/CityMapper.xml" />
