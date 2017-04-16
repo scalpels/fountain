@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.scalples.fountain.domain.City;
 import com.scalples.fountain.domain.Hotel;
+import com.scalples.fountain.domain.HotelExample;
 import com.scalples.fountain.mapper.HotelMapper;
 import com.scalples.fountain.repository.CityRepository;
 
@@ -26,7 +27,9 @@ public class HotelServiceHandler implements HotelService {
 
 	@Override
 	public Hotel findHotelByCityId(long id) {
-		return hotelMapper.selectByCityId(1);
+		HotelExample example = new HotelExample();
+		example.setDistinct(true);
+		return hotelMapper.selectByExample(example).get(0);
 	}
 
 }

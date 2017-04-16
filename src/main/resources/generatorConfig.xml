@@ -37,10 +37,15 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-		<table tableName="user" domainObjectName="User"
+		<table tableName="city" domainObjectName="City"
 			enableCountByExample="true" enableUpdateByExample="true"
 			enableDeleteByExample="true" enableSelectByExample="true"
 			selectByExampleQueryId="true"></table>
-
+			
+		<table tableName="hotel" domainObjectName="Hotel"
+		enableSelectByPrimaryKey="true"
+			enableCountByExample="true" enableUpdateByExample="true"
+			enableDeleteByExample="true" enableSelectByExample="true"
+			selectByExampleQueryId="true"></table>
 	</context>
 </generatorConfiguration>

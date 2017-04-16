@@ -6,6 +6,7 @@
 	</typeAliases>
 	<mappers>
 		<mapper resource="mybatis/CityMapper.xml" />
-		<mapper resource="mybatis/HotelMapper.xml" />
+	    <mapper resource="mybatis/HotelMapper.xml" />
 	</mappers>
+
 </configuration>

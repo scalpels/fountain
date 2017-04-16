@@ -12,19 +12,11 @@ import com.scalples.fountain.service.HotelService;
 public class HotelController {
 	@Autowired
 	private HotelService hotelService;
-
-//	@Autowired
-//	private UserMapper userMapper;
 	
 	@GetMapping("/")
 	@ResponseBody
 	public Hotel getHotel() {
 		return hotelService.findHotelByCityId(0l);
 	}
-	
-//	@GetMapping("/user")
-//	@ResponseBody
-//	public User getUser() {
-//		return userMapper.selectByPrimaryKey(1l);
-//	}
+
 }

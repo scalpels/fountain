@@ -1,54 +1,43 @@
 package com.scalples.fountain.domain;
 
-import java.io.Serializable;
+public class Hotel {
+    private Integer city;
 
-public class Hotel implements Serializable {
+    private String name;
 
-	private static final long serialVersionUID = 1L;
+    private String address;
 
-	private Long city;
+    private String zip;
 
-	private String name;
+    public Integer getCity() {
+        return city;
+    }
 
-	private String address;
+    public void setCity(Integer city) {
+        this.city = city;
+    }
 
-	private String zip;
+    public String getName() {
+        return name;
+    }
 
-	public Long getCity() {
-		return city;
-	}
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 
-	public void setCity(Long city) {
-		this.city = city;
-	}
+    public String getAddress() {
+        return address;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getZip() {
+        return zip;
+    }
 
-	public String getAddress() {
-		return address;
-	}
-
-	public void setAddress(String address) {
-		this.address = address;
-	}
-
-	public String getZip() {
-		return zip;
-	}
-
-	public void setZip(String zip) {
-		this.zip = zip;
-	}
-
-	@Override
-	public String toString() {
-		return getCity() + "," + getName() + "," + getAddress() + "," + getZip();
-	}
-	
+    public void setZip(String zip) {
+        this.zip = zip == null ? null : zip.trim();
+    }
 }

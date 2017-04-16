@@ -1,54 +1,43 @@
 package com.scalples.fountain.domain;
 
-import java.io.Serializable;
+public class City {
+    private Integer id;
 
-public class City implements Serializable {
+    private String name;
 
-	private static final long serialVersionUID = 1L;
+    private String state;
 
-	private Long id;
+    private String country;
 
-	private String name;
+    public Integer getId() {
+        return id;
+    }
 
-	private String state;
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	private String country;
+    public String getName() {
+        return name;
+    }
 
-	public Long getId() {
-		return this.id;
-	}
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public String getState() {
+        return state;
+    }
 
-	public String getName() {
-		return this.name;
-	}
+    public void setState(String state) {
+        this.state = state == null ? null : state.trim();
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getCountry() {
+        return country;
+    }
 
-	public String getState() {
-		return this.state;
-	}
-
-	public void setState(String state) {
-		this.state = state;
-	}
-
-	public String getCountry() {
-		return this.country;
-	}
-
-	public void setCountry(String country) {
-		this.country = country;
-	}
-
-	@Override
-	public String toString() {
-		return getId() + "," + getName() + "," + getState() + "," + getCountry();
-	}
-	
+    public void setCountry(String country) {
+        this.country = country == null ? null : country.trim();
+    }
 }
