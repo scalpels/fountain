@@ -1,8 +1,7 @@
-drop table if exists city;
-drop table if exists hotel;
+drop table if exists topic;
 
-create table city (id int auto_increment primary key, name varchar(30), state varchar(30), country varchar(30));
-create table hotel (city int, name varchar(30), address varchar(30), zip varchar(30));
+create table topic (id bigint auto_increment primary key, title varchar(30), description varchar(30),created_on timestamp,last_modified_on timestamp);
 
-insert into city (name, state, country) values ('San Francisco', 'CA', 'US');
-insert into hotel(city, name, address, zip) values (1, 'Conrad Treasury Place', 'William & George Streets', '4001')
+insert into topic (title, description,created_on,last_modified_on) values ('Security Network', '安全网络','2017-04-17','2017-04-17');
+insert into topic (title, description,created_on,last_modified_on) values ('Java', '一门编程语言','2017-04-17','2017-04-17');
+insert into topic (title, description,created_on,last_modified_on) values ('SAP', 'ERP软件提供商','2017-04-17','2017-04-17');

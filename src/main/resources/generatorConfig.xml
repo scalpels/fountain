@@ -3,7 +3,7 @@
 
 <generatorConfiguration>
 	<classPathEntry
-		location="E:\githubSpace\fountain\src\main\resources\mysql-connector-java-5.1.38.jar" />
+		location="C:\Users\i325776\GitRepository\fountain\src\main\resources\mysql-connector-java-5.1.38.jar" />
 
 	<context id="mysql" targetRuntime="MyBatis3">
 
@@ -37,15 +37,9 @@
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
-		<table tableName="city" domainObjectName="City"
-			enableCountByExample="true" enableUpdateByExample="true"
-			enableDeleteByExample="true" enableSelectByExample="true"
-			selectByExampleQueryId="true"></table>
-			
-		<table tableName="hotel" domainObjectName="Hotel"
-		enableSelectByPrimaryKey="true"
-			enableCountByExample="true" enableUpdateByExample="true"
-			enableDeleteByExample="true" enableSelectByExample="true"
-			selectByExampleQueryId="true"></table>
+
+		<table tableName="topic" domainObjectName="Topic" selectByExampleQueryId="true">
+	    </table>
+
 	</context>
 </generatorConfiguration>

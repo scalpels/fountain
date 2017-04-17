@@ -3,19 +3,19 @@ package com.scalples.fountain.repository;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.scalples.fountain.domain.City;
+import com.scalples.fountain.domain.Topic;
 
 @Repository
-public class CityRepository {
+public class TopicRepository {
 
 	private final SqlSession sqlSession;
 
-	public CityRepository(SqlSession sqlSession) {
+	public TopicRepository(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 	}
 
-	public City selectCityById(long id) {
-		return this.sqlSession.selectOne("selectCityById", id);
+	public Topic selectById(long id) {
+		return this.sqlSession.selectOne("selectById", id);
 	}
 
 }
