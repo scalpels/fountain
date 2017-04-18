@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.scalples.fountain.mapper.TopicMapper">
-  <resultMap id="BaseResultMap" type="com.scalples.fountain.domain.Topic">
+  <resultMap id="BaseResultMap" type="com.scalples.fountain.model.Topic">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
@@ -69,7 +69,7 @@
   <sql id="Base_Column_List">
     id, title, description, created_on, last_modified_on
   </sql>
-  <select id="selectByExample" parameterType="com.scalples.fountain.domain.TopicExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.scalples.fountain.model.TopicExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -94,27 +94,24 @@
     delete from topic
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.scalples.fountain.domain.TopicExample">
+  <delete id="deleteByExample" parameterType="com.scalples.fountain.model.TopicExample">
     delete from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.scalples.fountain.domain.Topic">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
-    insert into topic (title, description, created_on, 
-      last_modified_on)
-    values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createdOn,jdbcType=TIMESTAMP}, 
-      #{lastModifiedOn,jdbcType=TIMESTAMP})
+  <insert id="insert" parameterType="com.scalples.fountain.model.Topic">
+    insert into topic (id, title, description, 
+      created_on, last_modified_on)
+    values (#{id,jdbcType=BIGINT}, #{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{createdOn,jdbcType=TIMESTAMP}, #{lastModifiedOn,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" parameterType="com.scalples.fountain.domain.Topic">
-    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
-      SELECT LAST_INSERT_ID()
-    </selectKey>
+  <insert id="insertSelective" parameterType="com.scalples.fountain.model.Topic">
     insert into topic
     <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
       <if test="title != null">
         title,
       </if>
@@ -129,6 +126,9 @@
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
       <if test="title != null">
         #{title,jdbcType=VARCHAR},
       </if>
@@ -143,7 +143,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.scalples.fountain.domain.TopicExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.scalples.fountain.model.TopicExample" resultType="java.lang.Long">
     select count(*) from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -183,7 +183,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.scalples.fountain.domain.Topic">
+  <update id="updateByPrimaryKeySelective" parameterType="com.scalples.fountain.model.Topic">
     update topic
     <set>
       <if test="title != null">
@@ -201,7 +201,7 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.scalples.fountain.domain.Topic">
+  <update id="updateByPrimaryKey" parameterType="com.scalples.fountain.model.Topic">
     update topic
     set title = #{title,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
