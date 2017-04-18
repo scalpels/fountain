@@ -14,7 +14,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.scalples.fountain.model.Topic;
+import com.scalples.fountain.resource.entity.TopicEntity;
 import com.scalples.fountain.service.TopicService;
 
 @RestController
@@ -22,15 +24,18 @@ import com.scalples.fountain.service.TopicService;
 public class TopicController {
 	@Autowired
 	private TopicService topicService;
-
+	
+	private ObjectMapper objectMapper = new ObjectMapper();
+	
 	@GetMapping
 	public List<Topic> getTopicList() {
 		return topicService.getTopicList();
 	}
 
 	@PostMapping
-	public Topic createTopic(@Valid @RequestBody Topic topic) {
-		return topicService.createTopic(topic);
+	public TopicEntity createTopic(@Valid @RequestBody TopicEntity topicEntity) {
+		Topic topic = objectMapper.convertValue(topicEntity, Topic.class);
+		return objectMapper.convertValue(topicService.createTopic(topic), TopicEntity.class) ;
 	}
 
 	@GetMapping(value = "/{id}")
