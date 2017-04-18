@@ -21,7 +21,7 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.scalples.fountain.domain"
+		<javaModelGenerator targetPackage="com.scalples.fountain.model"
 			targetProject="src\main\java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />

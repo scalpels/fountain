@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.scalples.fountain.domain.Topic;
+import com.scalples.fountain.model.Topic;
 import com.scalples.fountain.service.TopicService;
 
 @RestController

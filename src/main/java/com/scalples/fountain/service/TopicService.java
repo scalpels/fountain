@@ -2,7 +2,7 @@ package com.scalples.fountain.service;
 
 import java.util.List;
 
-import com.scalples.fountain.domain.Topic;
+import com.scalples.fountain.model.Topic;
 
 public interface TopicService {
 

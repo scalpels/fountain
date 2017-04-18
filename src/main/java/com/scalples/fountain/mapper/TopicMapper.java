@@ -1,9 +1,10 @@
 package com.scalples.fountain.mapper;
 
-import com.scalples.fountain.domain.Topic;
-import com.scalples.fountain.domain.TopicExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+
+import com.scalples.fountain.model.Topic;
+import com.scalples.fountain.model.TopicExample;
 
 public interface TopicMapper {
     long countByExample(TopicExample example);

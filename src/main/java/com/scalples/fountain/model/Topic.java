@@ -1,4 +1,4 @@
-package com.scalples.fountain.domain;
+package com.scalples.fountain.model;
 
 import java.util.Date;
 

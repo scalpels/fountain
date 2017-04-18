@@ -5,9 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.scalples.fountain.domain.Topic;
-import com.scalples.fountain.domain.TopicExample;
 import com.scalples.fountain.mapper.TopicMapper;
+import com.scalples.fountain.model.Topic;
+import com.scalples.fountain.model.TopicExample;
 
 @Service
 public class TopicServiceHandler implements TopicService {
