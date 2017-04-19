@@ -32,7 +32,7 @@ public class TopicServiceHandler implements TopicService {
 
 	@Override
 	public Topic createTopic(Topic topic) {
-		topicMapper.insertSelective(topic);
+		topicMapper.insert(topic);
 		return topic;
 	}
 
