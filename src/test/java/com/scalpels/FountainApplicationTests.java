@@ -1,4 +1,4 @@
-package com.scalples;
+package com.scalpels;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

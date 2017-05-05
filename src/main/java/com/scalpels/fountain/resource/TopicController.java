@@ -1,4 +1,4 @@
-package com.scalples.fountain.resource;
+package com.scalpels.fountain.resource;
 
 import java.util.List;
 
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.scalples.fountain.model.Topic;
-import com.scalples.fountain.resource.entity.TopicEntity;
-import com.scalples.fountain.service.TopicService;
+import com.scalpels.fountain.model.Topic;
+import com.scalpels.fountain.resource.entity.TopicEntity;
+import com.scalpels.fountain.service.TopicService;
 
 @RestController
 @RequestMapping("/topics")

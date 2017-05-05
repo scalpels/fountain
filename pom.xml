@@ -9,7 +9,7 @@
 	<packaging>jar</packaging>
 
 	<name>fountain</name>
-	<description>Demo project for Spring Boot</description>
+	<description>fountain project of scalpel</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -24,7 +24,7 @@
 		<java.version>1.8</java.version>
 		<mybatis-springboot-starter.version>1.3.0</mybatis-springboot-starter.version>
 		<mybatis-generator.version>1.3.5</mybatis-generator.version>
-		<mysql-driver.version>5.1.38</mysql-driver.version>
+		<postgresql-driver.version>42.0.0</postgresql-driver.version>
 	</properties>
 
 	<dependencies>
@@ -46,16 +46,15 @@
 		</dependency>
 
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>${mysql-driver.version}</version>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql-driver.version}</version>
 		</dependency>
 
 		<!-- Runtime -->
 		<dependency>
 			<groupId>com.h2database</groupId>
 			<artifactId>h2</artifactId>
-			<scope>runtime</scope>
 		</dependency>
 
 		<dependency>

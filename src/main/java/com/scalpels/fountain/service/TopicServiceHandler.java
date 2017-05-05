@@ -1,13 +1,13 @@
-package com.scalples.fountain.service;
+package com.scalpels.fountain.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.scalples.fountain.mapper.TopicMapper;
-import com.scalples.fountain.model.Topic;
-import com.scalples.fountain.model.TopicExample;
+import com.scalpels.fountain.mapper.TopicMapper;
+import com.scalpels.fountain.model.Topic;
+import com.scalpels.fountain.model.TopicExample;
 
 @Service
 public class TopicServiceHandler implements TopicService {

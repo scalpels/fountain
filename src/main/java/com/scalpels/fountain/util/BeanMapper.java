@@ -1,4 +1,4 @@
-package com.scalples.fountain.util;
+package com.scalpels.fountain.util;
 
 import java.util.Collection;
 import java.util.List;

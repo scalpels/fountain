@@ -1,8 +1,8 @@
-package com.scalples.fountain.service;
+package com.scalpels.fountain.service;
 
 import java.util.List;
 
-import com.scalples.fountain.model.Topic;
+import com.scalpels.fountain.model.Topic;
 
 public interface TopicService {
 

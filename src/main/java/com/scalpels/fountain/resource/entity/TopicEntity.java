@@ -1,4 +1,4 @@
-package com.scalples.fountain.resource.entity;
+package com.scalpels.fountain.resource.entity;
 
 import java.util.Date;
 

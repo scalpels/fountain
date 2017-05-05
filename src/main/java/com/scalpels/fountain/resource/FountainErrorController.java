@@ -1,4 +1,4 @@
-package com.scalples.fountain.resource;
+package com.scalpels.fountain.resource;
 
 import java.util.Map;
 
