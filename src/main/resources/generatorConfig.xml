@@ -3,9 +3,9 @@
 
 <generatorConfiguration>
 	<classPathEntry
-		location="/home/seven/githubRepository/fountain/src/main/resources/postgresql-42.0.0.jar" />
+		location="/home/seven/githubRepository/scalpels-fountain/src/main/resources/postgresql-42.0.0.jar" />
 
-	<context id="postgresql" targetRuntime="MyBatis3">
+	<context id="fountain" targetRuntime="MyBatis3">
 
 		<commentGenerator>
 			<property name="suppressDate" value="true" />
@@ -38,8 +38,8 @@
 		</javaClientGenerator>
 
 
-		<table tableName="topic" domainObjectName="Topic" selectByExampleQueryId="true">
-		<generatedKey column="id" sqlStatement="postgresql" identity="true" />
+		<table tableName="topic" domainObjectName="Topic" selectByExampleQueryId="true" delimitIdentifiers="true" delimitAllColumns="true">
+		<generatedKey column="id" sqlStatement="JDBC" identity="true" />
 	    </table>
 
 	</context>
