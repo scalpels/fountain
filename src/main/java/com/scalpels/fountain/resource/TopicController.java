@@ -5,6 +5,8 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -27,11 +29,12 @@ public class TopicController {
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
 	
+	@PreAuthorize("hasRole('PREMIUM_MEMBER')")
 	@GetMapping
 	public List<Topic> getTopicList() {
 		return topicService.getTopicList();
 	}
-
+	@Secured("ROLE_USER")
 	@PostMapping
 	public TopicEntity createTopic(@Valid @RequestBody TopicEntity topicEntity) {
 		Topic topic = objectMapper.convertValue(topicEntity, Topic.class);
