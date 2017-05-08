@@ -1,4 +1,4 @@
-package com.scalpels.fountain.security;
+package com.scalpels.fountain.config.security;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;

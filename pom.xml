@@ -15,7 +15,7 @@
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.5.2.RELEASE</version>
-		<relativePath /> <!-- lookup parent from repository -->
+		<relativePath />
 	</parent>
 
 	<properties>
@@ -37,6 +37,11 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
 
@@ -46,7 +51,7 @@
 			<artifactId>jjwt</artifactId>
 			<version>${jwt.version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.mybatis.spring.boot</groupId>
 			<artifactId>mybatis-spring-boot-starter</artifactId>
@@ -79,6 +84,21 @@
 		</dependency>
 	</dependencies>
 
+	<profiles>
+		<profile>
+			<id>production</id>
+			<dependencies>
+				<!-- This sample is a test for the autoconfig when commons-pool is *absent*.
+					In production it would be useful to enable pooling by using this dependency. -->
+				<dependency>
+					<groupId>commons-pool</groupId>
+					<artifactId>commons-pool</artifactId>
+					<type>pom.lastUpdated</type>
+				</dependency>
+			</dependencies>
+		</profile>
+	</profiles>
+	
 	<build>
 		<plugins>
 			<plugin>

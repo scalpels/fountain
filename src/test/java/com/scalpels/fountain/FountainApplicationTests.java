@@ -1,4 +1,4 @@
-package com.scalpels;
+package com.scalpels.fountain;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
