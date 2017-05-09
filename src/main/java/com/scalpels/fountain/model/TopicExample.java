@@ -305,6 +305,76 @@ public class TopicExample {
             return (Criteria) this;
         }
 
+        public Criteria andCreatedByIsNull() {
+            addCriterion("\"created_by\" is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByIsNotNull() {
+            addCriterion("\"created_by\" is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByEqualTo(String value) {
+            addCriterion("\"created_by\" =", value, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByNotEqualTo(String value) {
+            addCriterion("\"created_by\" <>", value, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByGreaterThan(String value) {
+            addCriterion("\"created_by\" >", value, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByGreaterThanOrEqualTo(String value) {
+            addCriterion("\"created_by\" >=", value, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByLessThan(String value) {
+            addCriterion("\"created_by\" <", value, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByLessThanOrEqualTo(String value) {
+            addCriterion("\"created_by\" <=", value, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByLike(String value) {
+            addCriterion("\"created_by\" like", value, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByNotLike(String value) {
+            addCriterion("\"created_by\" not like", value, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByIn(List<String> values) {
+            addCriterion("\"created_by\" in", values, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByNotIn(List<String> values) {
+            addCriterion("\"created_by\" not in", values, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByBetween(String value1, String value2) {
+            addCriterion("\"created_by\" between", value1, value2, "createdBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreatedByNotBetween(String value1, String value2) {
+            addCriterion("\"created_by\" not between", value1, value2, "createdBy");
+            return (Criteria) this;
+        }
+
         public Criteria andCreatedOnIsNull() {
             addCriterion("\"created_on\" is null");
             return (Criteria) this;
@@ -422,6 +492,76 @@ public class TopicExample {
 
         public Criteria andLastModifiedOnNotBetween(Date value1, Date value2) {
             addCriterion("\"last_modified_on\" not between", value1, value2, "lastModifiedOn");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByIsNull() {
+            addCriterion("\"last_modified_by\" is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByIsNotNull() {
+            addCriterion("\"last_modified_by\" is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByEqualTo(String value) {
+            addCriterion("\"last_modified_by\" =", value, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByNotEqualTo(String value) {
+            addCriterion("\"last_modified_by\" <>", value, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByGreaterThan(String value) {
+            addCriterion("\"last_modified_by\" >", value, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByGreaterThanOrEqualTo(String value) {
+            addCriterion("\"last_modified_by\" >=", value, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByLessThan(String value) {
+            addCriterion("\"last_modified_by\" <", value, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByLessThanOrEqualTo(String value) {
+            addCriterion("\"last_modified_by\" <=", value, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByLike(String value) {
+            addCriterion("\"last_modified_by\" like", value, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByNotLike(String value) {
+            addCriterion("\"last_modified_by\" not like", value, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByIn(List<String> values) {
+            addCriterion("\"last_modified_by\" in", values, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByNotIn(List<String> values) {
+            addCriterion("\"last_modified_by\" not in", values, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByBetween(String value1, String value2) {
+            addCriterion("\"last_modified_by\" between", value1, value2, "lastModifiedBy");
+            return (Criteria) this;
+        }
+
+        public Criteria andLastModifiedByNotBetween(String value1, String value2) {
+            addCriterion("\"last_modified_by\" not between", value1, value2, "lastModifiedBy");
             return (Criteria) this;
         }
     }

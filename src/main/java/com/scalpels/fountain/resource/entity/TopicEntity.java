@@ -16,7 +16,11 @@ public class TopicEntity {
 
 	private Date createdOn;
 
+	private String createdBy;
+
 	private Date lastModifiedOn;
+
+	private String lastModifiedBy;
 
 	public Long getId() {
 		return id;
@@ -57,4 +61,21 @@ public class TopicEntity {
 	public void setLastModifiedOn(Date lastModifiedOn) {
 		this.lastModifiedOn = lastModifiedOn;
 	}
+
+	public String getCreatedBy() {
+		return createdBy;
+	}
+
+	public void setCreatedBy(String createdBy) {
+		this.createdBy = createdBy;
+	}
+
+	public String getLastModifiedBy() {
+		return lastModifiedBy;
+	}
+
+	public void setLastModifiedBy(String lastModifiedBy) {
+		this.lastModifiedBy = lastModifiedBy;
+	}
+
 }

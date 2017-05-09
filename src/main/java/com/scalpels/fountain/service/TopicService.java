@@ -2,6 +2,8 @@ package com.scalpels.fountain.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+
 import com.scalpels.fountain.model.Topic;
 
 public interface TopicService {
@@ -14,5 +16,5 @@ public interface TopicService {
 
 	void deleteTopicById(Long id);
 	
-	List<Topic> getTopicList();
+	List<Topic> getTopicList(Pageable pageable);
 }

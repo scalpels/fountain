@@ -3,7 +3,7 @@
 
 <generatorConfiguration>
 	<classPathEntry
-		location="/home/seven/githubRepository/scalpels-fountain/src/main/resources/postgresql-42.0.0.jar" />
+		location="/home/seven/github/scalpels-fountain/src/main/resources/postgresql-42.0.0.jar" />
 
 	<context id="fountain" targetRuntime="MyBatis3">
 

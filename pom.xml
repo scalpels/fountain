@@ -59,6 +59,12 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.1.1</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
 			<version>${postgresql-driver.version}</version>
@@ -88,7 +94,7 @@
 		<profile>
 			<id>production</id>
 			<dependencies>
-				<!-- This sample is a test for the autoconfig when commons-pool is *absent*.
+				<!-- This sample is a test for the autoconfig when commons-pool is *absent*. 
 					In production it would be useful to enable pooling by using this dependency. -->
 				<dependency>
 					<groupId>commons-pool</groupId>
@@ -98,7 +104,7 @@
 			</dependencies>
 		</profile>
 	</profiles>
-	
+
 	<build>
 		<plugins>
 			<plugin>

@@ -5,8 +5,10 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
     <result column="created_on" jdbcType="TIMESTAMP" property="createdOn" />
     <result column="last_modified_on" jdbcType="TIMESTAMP" property="lastModifiedOn" />
+    <result column="last_modified_by" jdbcType="VARCHAR" property="lastModifiedBy" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -67,7 +69,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    "id", "title", "description", "created_on", "last_modified_on"
+    "id", "title", "description", "created_by", "created_on", "last_modified_on", "last_modified_by"
   </sql>
   <select id="selectByExample" parameterType="com.scalpels.fountain.model.TopicExample" resultMap="BaseResultMap">
     select
@@ -101,10 +103,12 @@
     </if>
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.scalpels.fountain.model.Topic" useGeneratedKeys="true">
-    insert into "topic" ("title", "description", "created_on", 
-      "last_modified_on")
-    values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createdOn,jdbcType=TIMESTAMP}, 
-      #{lastModifiedOn,jdbcType=TIMESTAMP})
+    insert into "topic" ("title", "description", "created_by", 
+      "created_on", "last_modified_on", "last_modified_by"
+      )
+    values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdOn,jdbcType=TIMESTAMP}, #{lastModifiedOn,jdbcType=TIMESTAMP}, #{lastModifiedBy,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.scalpels.fountain.model.Topic" useGeneratedKeys="true">
     insert into "topic"
@@ -115,11 +119,17 @@
       <if test="description != null">
         "description",
       </if>
+      <if test="createdBy != null">
+        "created_by",
+      </if>
       <if test="createdOn != null">
         "created_on",
       </if>
       <if test="lastModifiedOn != null">
         "last_modified_on",
+      </if>
+      <if test="lastModifiedBy != null">
+        "last_modified_by",
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -129,11 +139,17 @@
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
       <if test="createdOn != null">
         #{createdOn,jdbcType=TIMESTAMP},
       </if>
       <if test="lastModifiedOn != null">
         #{lastModifiedOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null">
+        #{lastModifiedBy,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -155,11 +171,17 @@
       <if test="record.description != null">
         "description" = #{record.description,jdbcType=VARCHAR},
       </if>
+      <if test="record.createdBy != null">
+        "created_by" = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
       <if test="record.createdOn != null">
         "created_on" = #{record.createdOn,jdbcType=TIMESTAMP},
       </if>
       <if test="record.lastModifiedOn != null">
         "last_modified_on" = #{record.lastModifiedOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastModifiedBy != null">
+        "last_modified_by" = #{record.lastModifiedBy,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -171,8 +193,10 @@
     set "id" = #{record.id,jdbcType=BIGINT},
       "title" = #{record.title,jdbcType=VARCHAR},
       "description" = #{record.description,jdbcType=VARCHAR},
+      "created_by" = #{record.createdBy,jdbcType=VARCHAR},
       "created_on" = #{record.createdOn,jdbcType=TIMESTAMP},
-      "last_modified_on" = #{record.lastModifiedOn,jdbcType=TIMESTAMP}
+      "last_modified_on" = #{record.lastModifiedOn,jdbcType=TIMESTAMP},
+      "last_modified_by" = #{record.lastModifiedBy,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -186,11 +210,17 @@
       <if test="description != null">
         "description" = #{description,jdbcType=VARCHAR},
       </if>
+      <if test="createdBy != null">
+        "created_by" = #{createdBy,jdbcType=VARCHAR},
+      </if>
       <if test="createdOn != null">
         "created_on" = #{createdOn,jdbcType=TIMESTAMP},
       </if>
       <if test="lastModifiedOn != null">
         "last_modified_on" = #{lastModifiedOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null">
+        "last_modified_by" = #{lastModifiedBy,jdbcType=VARCHAR},
       </if>
     </set>
     where "id" = #{id,jdbcType=BIGINT}
@@ -199,8 +229,10 @@
     update "topic"
     set "title" = #{title,jdbcType=VARCHAR},
       "description" = #{description,jdbcType=VARCHAR},
+      "created_by" = #{createdBy,jdbcType=VARCHAR},
       "created_on" = #{createdOn,jdbcType=TIMESTAMP},
-      "last_modified_on" = #{lastModifiedOn,jdbcType=TIMESTAMP}
+      "last_modified_on" = #{lastModifiedOn,jdbcType=TIMESTAMP},
+      "last_modified_by" = #{lastModifiedBy,jdbcType=VARCHAR}
     where "id" = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

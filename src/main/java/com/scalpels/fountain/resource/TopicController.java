@@ -1,10 +1,15 @@
 package com.scalpels.fountain.resource;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,25 +29,32 @@ import com.scalpels.fountain.service.TopicService;
 @RestController
 @RequestMapping("/topics")
 public class TopicController {
+	
+    private final Logger logger = LoggerFactory.getLogger(this.getClass());
+    
 	@Autowired
 	private TopicService topicService;
 	
 	private ObjectMapper objectMapper = new ObjectMapper();
 	
-	@PreAuthorize("hasRole('PREMIUM_MEMBER')")
+	@PreAuthorize("hasRole('ROLE_USER')")
 	@GetMapping
-	public List<Topic> getTopicList() {
-		return topicService.getTopicList();
+	public List<Topic> getTopicList(@PageableDefault(page = 0, size = 10) Pageable pageable) {
+		logger.info("pageable information : {} {}",pageable.getPageNumber(),pageable.getOffset());
+		return topicService.getTopicList(pageable);
 	}
 	@Secured("ROLE_USER")
 	@PostMapping
-	public TopicEntity createTopic(@Valid @RequestBody TopicEntity topicEntity) {
+	public TopicEntity createTopic(@Valid @RequestBody TopicEntity topicEntity,Principal principal) {
+		logger.info("principal information : {}",principal.getName());
+		topicEntity.setCreatedBy(principal.getName());
 		Topic topic = objectMapper.convertValue(topicEntity, Topic.class);
 		return objectMapper.convertValue(topicService.createTopic(topic), TopicEntity.class) ;
 	}
 
 	@GetMapping(value = "/{id}")
 	public Topic getTopicById(@PathVariable Long id) {
+		logger.info("get topic id: {}",id);
 		return topicService.getTopicById(id);
 	}
 
