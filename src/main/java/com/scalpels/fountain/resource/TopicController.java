@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -39,7 +40,7 @@ public class TopicController {
 	
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@GetMapping
-	public List<Topic> getTopicList(@PageableDefault(page = 0, size = 10) Pageable pageable) {
+	public List<Topic> getTopicList(@PageableDefault(page = 1, size = 10,sort = { "lastModifiedOn" }, direction = Direction.DESC) Pageable pageable) {
 		logger.info("pageable information : {} {}",pageable.getPageNumber(),pageable.getOffset());
 		return topicService.getTopicList(pageable);
 	}
