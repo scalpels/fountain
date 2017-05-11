@@ -1,6 +1,5 @@
 package com.scalpels.fountain.service;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -8,13 +7,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort.Order;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 import com.scalpels.fountain.mapper.TopicMapper;
 import com.scalpels.fountain.model.Topic;
 import com.scalpels.fountain.model.TopicExample;
+import com.scalpels.fountain.util.MybatisOrderByClauseUtil;
 
 @Service
 public class TopicServiceHandler implements TopicService {
@@ -40,11 +39,9 @@ public class TopicServiceHandler implements TopicService {
 	public List<Topic> getTopicList(Pageable pageable) {
         PageHelper.startPage(pageable.getPageNumber(), pageable.getPageSize());
 		TopicExample example = new TopicExample();
-//		Iterator<Order> orders = ;
-		pageable.getSort().iterator().forEachRemaining(order -> {
-			example.setOrderByClause(order.getProperty()+" "+order.getDirection());
+		MybatisOrderByClauseUtil.generateOrderByClause(pageable.getSort()).ifPresent(orderByClause -> {
+			example.setOrderByClause(orderByClause);
 		});
-
 		return topicMapper.selectByExample(example);
 	}
 

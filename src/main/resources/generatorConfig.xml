@@ -39,7 +39,7 @@
 
 
 		<table tableName="topic" domainObjectName="Topic" selectByExampleQueryId="true" delimitIdentifiers="true" delimitAllColumns="true">
-		<generatedKey column="id" sqlStatement="JDBC" identity="true" />
+		 <generatedKey column="id" sqlStatement="JDBC" identity="true" />
 	    </table>
 
 	</context>
