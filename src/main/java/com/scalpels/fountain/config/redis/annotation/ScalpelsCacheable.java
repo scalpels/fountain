@@ -1,4 +1,4 @@
-package com.scalpels.fountain.config.redis;
+package com.scalpels.fountain.config.redis.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
@@ -11,8 +11,7 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Inherited
 @Documented
-public @interface ScalpelsCachePut {
-
+public @interface ScalpelsCacheable {
 	String[] value() default {};
 
 	String key() default "";
@@ -26,5 +25,7 @@ public @interface ScalpelsCachePut {
 	String condition() default "";
 
 	String unless() default "";
+
+	boolean sync() default false;
 
 }

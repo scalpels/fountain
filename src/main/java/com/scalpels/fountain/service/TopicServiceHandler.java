@@ -13,7 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
-import com.scalpels.fountain.config.redis.ScalpelsCacheable;
+import com.scalpels.fountain.config.redis.annotation.ScalpelsCacheable;
 import com.scalpels.fountain.mapper.TopicMapper;
 import com.scalpels.fountain.model.Topic;
 import com.scalpels.fountain.model.TopicExample;
@@ -29,7 +29,7 @@ public class TopicServiceHandler implements TopicService {
 	
 	@Override
 //	@Cacheable(value = "topic", keyGenerator = "keyGenerator")
-	@ScalpelsCacheable(value="nonumber1989",key="#id")
+	@ScalpelsCacheable(value={"topic","test"},key="#id")
 	public Topic getTopicById(Long id) {
 		logger.info("get from db {}",id);
 		return topicMapper.selectByPrimaryKey(id);

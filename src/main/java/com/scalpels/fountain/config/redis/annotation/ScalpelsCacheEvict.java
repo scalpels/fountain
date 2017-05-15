@@ -1,4 +1,4 @@
-package com.scalpels.fountain.config.redis;
+package com.scalpels.fountain.config.redis.annotation;
 
 import java.lang.annotation.Documented;
 import java.lang.annotation.ElementType;
