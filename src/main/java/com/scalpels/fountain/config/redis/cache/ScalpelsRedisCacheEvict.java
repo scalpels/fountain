@@ -19,7 +19,7 @@ import com.scalpels.fountain.config.redis.annotation.ScalpelsCacheEvict;
 
 @Aspect
 @Component
-public class ScalpelsRedisCacheEvict extends ScalpelsRedisCache{
+public class ScalpelsRedisCacheEvict extends ScalpelsRedisCache {
 
 	private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
@@ -40,9 +40,9 @@ public class ScalpelsRedisCacheEvict extends ScalpelsRedisCache{
 		Method method = signature.getMethod();
 		ScalpelsCacheEvict cacheEvictAnnotation = method.getAnnotation(ScalpelsCacheEvict.class);
 		String fieldKey = parseKey(cacheEvictAnnotation.key(), method, joinPoint.getArgs());
-		
+
 		Object returnValue = joinPoint.proceed();
-		
+
 		Arrays.stream(cacheEvictAnnotation.value()).forEach(evictKey -> {
 			String cacheName = evictKey.concat(ScalpelsRedisCache.cacheDelimieter) + fieldKey;
 			logger.info("cache name is {}", cacheName);
