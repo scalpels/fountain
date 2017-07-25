@@ -3,44 +3,44 @@
 
 <generatorConfiguration>
 	<classPathEntry
-		location="/home/seven/github/scalpels-fountain/src/main/resources/postgresql-42.0.0.jar" />
+			location="/Users/yuqiang.xyq/WorkingTools/mysql-connector-java-5.1.38.jar" />
 
-	<context id="fountain" targetRuntime="MyBatis3">
+	<context id="mysql" targetRuntime="MyBatis3">
 
 		<commentGenerator>
 			<property name="suppressDate" value="true" />
 			<property name="suppressAllComments" value="true" />
 		</commentGenerator>
 
-		<jdbcConnection driverClass="org.postgresql.Driver"
-			connectionURL="jdbc:postgresql://localhost:5432/fountain" userId="postgres"
-			password="postgres">
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+						connectionURL="jdbc:mysql://localhost:3306/originoo" userId="root"
+						password="root">
 		</jdbcConnection>
 
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="com.scalpels.fountain.model"
-			targetProject="src/main/java">
+		<javaModelGenerator targetPackage="com.scalples.fountain.model"
+							targetProject="src\main\java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<sqlMapGenerator targetPackage="mybatis"
-			targetProject="src/main/resources">
+						 targetProject="src\main\resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
 		<javaClientGenerator type="XMLMAPPER"
-			targetPackage="com.scalpels.fountain.mapper" targetProject="src/main/java">
+							 targetPackage="com.scalples.fountain.mapper" targetProject="src\main\java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
 
-		<table tableName="topic" domainObjectName="Topic" selectByExampleQueryId="true" delimitIdentifiers="true" delimitAllColumns="true">
-		 <generatedKey column="id" sqlStatement="JDBC" identity="true" />
-	    </table>
+		<table tableName="topic" domainObjectName="Topic" selectByExampleQueryId="true">
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
 
 	</context>
 </generatorConfiguration>
