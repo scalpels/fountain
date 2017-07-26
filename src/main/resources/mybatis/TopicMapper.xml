@@ -5,10 +5,8 @@
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
     <result column="created_on" jdbcType="TIMESTAMP" property="createdOn" />
     <result column="last_modified_on" jdbcType="TIMESTAMP" property="lastModifiedOn" />
-    <result column="last_modified_by" jdbcType="VARCHAR" property="lastModifiedBy" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -69,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    "id", "title", "description", "created_by", "created_on", "last_modified_on", "last_modified_by"
+    id, title, description, created_on, last_modified_on
   </sql>
   <select id="selectByExample" parameterType="com.scalpels.fountain.model.TopicExample" resultMap="BaseResultMap">
     select
@@ -78,7 +76,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from "topic"
+    from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,47 +87,45 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from "topic"
-    where "id" = #{id,jdbcType=BIGINT}
+    from topic
+    where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from "topic"
-    where "id" = #{id,jdbcType=BIGINT}
+    delete from topic
+    where id = #{id,jdbcType=BIGINT}
   </delete>
   <delete id="deleteByExample" parameterType="com.scalpels.fountain.model.TopicExample">
-    delete from "topic"
+    delete from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.scalpels.fountain.model.Topic" useGeneratedKeys="true">
-    insert into "topic" ("title", "description", "created_by", 
-      "created_on", "last_modified_on", "last_modified_by"
-      )
-    values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
-      #{createdOn,jdbcType=TIMESTAMP}, #{lastModifiedOn,jdbcType=TIMESTAMP}, #{lastModifiedBy,jdbcType=VARCHAR}
-      )
+  <insert id="insert" parameterType="com.scalpels.fountain.model.Topic">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into topic (title, description, created_on, 
+      last_modified_on)
+    values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createdOn,jdbcType=TIMESTAMP}, 
+      #{lastModifiedOn,jdbcType=TIMESTAMP})
   </insert>
-  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.scalpels.fountain.model.Topic" useGeneratedKeys="true">
-    insert into "topic"
+  <insert id="insertSelective" parameterType="com.scalpels.fountain.model.Topic">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into topic
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="title != null">
-        "title",
+        title,
       </if>
       <if test="description != null">
-        "description",
-      </if>
-      <if test="createdBy != null">
-        "created_by",
+        description,
       </if>
       <if test="createdOn != null">
-        "created_on",
+        created_on,
       </if>
       <if test="lastModifiedOn != null">
-        "last_modified_on",
-      </if>
-      <if test="lastModifiedBy != null">
-        "last_modified_by",
+        last_modified_on,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -139,49 +135,37 @@
       <if test="description != null">
         #{description,jdbcType=VARCHAR},
       </if>
-      <if test="createdBy != null">
-        #{createdBy,jdbcType=VARCHAR},
-      </if>
       <if test="createdOn != null">
         #{createdOn,jdbcType=TIMESTAMP},
       </if>
       <if test="lastModifiedOn != null">
         #{lastModifiedOn,jdbcType=TIMESTAMP},
       </if>
-      <if test="lastModifiedBy != null">
-        #{lastModifiedBy,jdbcType=VARCHAR},
-      </if>
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.scalpels.fountain.model.TopicExample" resultType="java.lang.Long">
-    select count(*) from "topic"
+    select count(*) from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update "topic"
+    update topic
     <set>
       <if test="record.id != null">
-        "id" = #{record.id,jdbcType=BIGINT},
+        id = #{record.id,jdbcType=BIGINT},
       </if>
       <if test="record.title != null">
-        "title" = #{record.title,jdbcType=VARCHAR},
+        title = #{record.title,jdbcType=VARCHAR},
       </if>
       <if test="record.description != null">
-        "description" = #{record.description,jdbcType=VARCHAR},
-      </if>
-      <if test="record.createdBy != null">
-        "created_by" = #{record.createdBy,jdbcType=VARCHAR},
+        description = #{record.description,jdbcType=VARCHAR},
       </if>
       <if test="record.createdOn != null">
-        "created_on" = #{record.createdOn,jdbcType=TIMESTAMP},
+        created_on = #{record.createdOn,jdbcType=TIMESTAMP},
       </if>
       <if test="record.lastModifiedOn != null">
-        "last_modified_on" = #{record.lastModifiedOn,jdbcType=TIMESTAMP},
-      </if>
-      <if test="record.lastModifiedBy != null">
-        "last_modified_by" = #{record.lastModifiedBy,jdbcType=VARCHAR},
+        last_modified_on = #{record.lastModifiedOn,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null">
@@ -189,50 +173,40 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update "topic"
-    set "id" = #{record.id,jdbcType=BIGINT},
-      "title" = #{record.title,jdbcType=VARCHAR},
-      "description" = #{record.description,jdbcType=VARCHAR},
-      "created_by" = #{record.createdBy,jdbcType=VARCHAR},
-      "created_on" = #{record.createdOn,jdbcType=TIMESTAMP},
-      "last_modified_on" = #{record.lastModifiedOn,jdbcType=TIMESTAMP},
-      "last_modified_by" = #{record.lastModifiedBy,jdbcType=VARCHAR}
+    update topic
+    set id = #{record.id,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      created_on = #{record.createdOn,jdbcType=TIMESTAMP},
+      last_modified_on = #{record.lastModifiedOn,jdbcType=TIMESTAMP}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.scalpels.fountain.model.Topic">
-    update "topic"
+    update topic
     <set>
       <if test="title != null">
-        "title" = #{title,jdbcType=VARCHAR},
+        title = #{title,jdbcType=VARCHAR},
       </if>
       <if test="description != null">
-        "description" = #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="createdBy != null">
-        "created_by" = #{createdBy,jdbcType=VARCHAR},
+        description = #{description,jdbcType=VARCHAR},
       </if>
       <if test="createdOn != null">
-        "created_on" = #{createdOn,jdbcType=TIMESTAMP},
+        created_on = #{createdOn,jdbcType=TIMESTAMP},
       </if>
       <if test="lastModifiedOn != null">
-        "last_modified_on" = #{lastModifiedOn,jdbcType=TIMESTAMP},
-      </if>
-      <if test="lastModifiedBy != null">
-        "last_modified_by" = #{lastModifiedBy,jdbcType=VARCHAR},
+        last_modified_on = #{lastModifiedOn,jdbcType=TIMESTAMP},
       </if>
     </set>
-    where "id" = #{id,jdbcType=BIGINT}
+    where id = #{id,jdbcType=BIGINT}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.scalpels.fountain.model.Topic">
-    update "topic"
-    set "title" = #{title,jdbcType=VARCHAR},
-      "description" = #{description,jdbcType=VARCHAR},
-      "created_by" = #{createdBy,jdbcType=VARCHAR},
-      "created_on" = #{createdOn,jdbcType=TIMESTAMP},
-      "last_modified_on" = #{lastModifiedOn,jdbcType=TIMESTAMP},
-      "last_modified_by" = #{lastModifiedBy,jdbcType=VARCHAR}
-    where "id" = #{id,jdbcType=BIGINT}
+    update topic
+    set title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      created_on = #{createdOn,jdbcType=TIMESTAMP},
+      last_modified_on = #{lastModifiedOn,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
   </update>
 </mapper>

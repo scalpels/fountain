@@ -13,7 +13,7 @@
 		</commentGenerator>
 
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-						connectionURL="jdbc:mysql://localhost:3306/originoo" userId="root"
+						connectionURL="jdbc:mysql://localhost:3306/originoo?useSSL=false" userId="root"
 						password="root">
 		</jdbcConnection>
 
@@ -22,18 +22,18 @@
 		</javaTypeResolver>
 
 		<javaModelGenerator targetPackage="com.scalples.fountain.model"
-							targetProject="src\main\java">
+							targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
 		</javaModelGenerator>
 
 		<sqlMapGenerator targetPackage="mybatis"
-						 targetProject="src\main\resources">
+						 targetProject="src/main/resources">
 			<property name="enableSubPackages" value="true" />
 		</sqlMapGenerator>
 
 		<javaClientGenerator type="XMLMAPPER"
-							 targetPackage="com.scalples.fountain.mapper" targetProject="src\main\java">
+							 targetPackage="com.scalples.fountain.mapper" targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 		</javaClientGenerator>
 
