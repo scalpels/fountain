@@ -9,7 +9,11 @@ public class Topic {
 
     private String description;
 
+    private String createdBy;
+
     private Date createdOn;
+
+    private String lastModifiedBy;
 
     private Date lastModifiedOn;
 
@@ -37,12 +41,28 @@ public class Topic {
         this.description = description == null ? null : description.trim();
     }
 
+    public String getCreatedBy() {
+        return createdBy;
+    }
+
+    public void setCreatedBy(String createdBy) {
+        this.createdBy = createdBy == null ? null : createdBy.trim();
+    }
+
     public Date getCreatedOn() {
         return createdOn;
     }
 
     public void setCreatedOn(Date createdOn) {
         this.createdOn = createdOn;
+    }
+
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
+    }
+
+    public void setLastModifiedBy(String lastModifiedBy) {
+        this.lastModifiedBy = lastModifiedBy == null ? null : lastModifiedBy.trim();
     }
 
     public Date getLastModifiedOn() {

@@ -1,11 +1,9 @@
 package com.scalpels.fountain.resource;
 
-import java.security.Principal;
-import java.util.List;
-
-import javax.validation.Valid;
-
 import com.scalpels.fountain.model.Topic;
+import com.scalpels.fountain.resource.entity.TopicEntity;
+import com.scalpels.fountain.service.TopicService;
+import com.scalpels.fountain.util.BeanMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.scalpels.fountain.resource.entity.TopicEntity;
-import com.scalpels.fountain.service.TopicService;
+import javax.validation.Valid;
+import java.security.Principal;
+import java.util.List;
 
 @RestController
 @RequestMapping("/topics")
@@ -35,9 +33,11 @@ public class TopicController {
     
 	@Autowired
 	private TopicService topicService;
-	
-	private ObjectMapper objectMapper = new ObjectMapper();
-	
+
+	@Autowired
+	private BeanMapper beanMapper;
+
+
 	@PreAuthorize("hasRole('ROLE_USER')")
 	@GetMapping
 	public List<Topic> getTopicList(@PageableDefault(page = 1, size = 10,sort = { "lastModifiedOn" }, direction = Direction.DESC) Pageable pageable) {
@@ -49,14 +49,14 @@ public class TopicController {
 	public TopicEntity createTopic(@Valid @RequestBody TopicEntity topicEntity,Principal principal) {
 		logger.info("principal information : {}",principal.getName());
 		topicEntity.setCreatedBy(principal.getName());
-		Topic topic = objectMapper.convertValue(topicEntity, Topic.class);
-		return objectMapper.convertValue(topicService.createTopic(topic), TopicEntity.class) ;
+		Topic topic = beanMapper.map(topicEntity,Topic.class);
+		return beanMapper.map(topicService.createTopic(topic), TopicEntity.class);
 	}
 
 	@GetMapping(value = "/{id}")
-	public Topic getTopicById(@PathVariable Long id) {
+	public TopicEntity getTopicById(@PathVariable Long id) {
 		logger.info("get topic id: {}",id);
-		return topicService.getTopicById(id);
+		return beanMapper.map(topicService.getTopicById(id),TopicEntity.class);
 	}
 
 	@PutMapping(value = "/{id}")
