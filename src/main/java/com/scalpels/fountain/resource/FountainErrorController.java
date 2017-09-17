@@ -39,7 +39,7 @@ public class FountainErrorController implements ErrorController {
 		if (parameter == null) {
 			return false;
 		}
-		
+
 		return !"false".equals(parameter.toLowerCase());
 	}
 
