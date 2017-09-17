@@ -20,7 +20,7 @@ public class TopicServiceHandler implements TopicService {
     
 	@Autowired
 	private TopicMapper topicMapper;
-	
+
 	@Override
 	public Topic getTopicById(Long id) {
 		logger.info("get from db {}",id);
