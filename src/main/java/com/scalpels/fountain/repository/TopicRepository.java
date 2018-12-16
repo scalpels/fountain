@@ -1,6 +1,6 @@
 package com.scalpels.fountain.repository;
 
-import com.scalpels.fountain.model.Topic;
+import com.scalpels.fountain.entity.Topic;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 

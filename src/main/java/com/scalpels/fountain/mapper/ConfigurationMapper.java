@@ -1,7 +1,7 @@
 package com.scalpels.fountain.mapper;
 
-import com.scalpels.fountain.model.Configuration;
-import com.scalpels.fountain.model.ConfigurationExample;
+import com.scalpels.fountain.entity.Configuration;
+import com.scalpels.fountain.entity.ConfigurationExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
 

@@ -2,7 +2,7 @@ package com.scalpels.fountain.service;
 
 import java.util.List;
 
-import com.scalpels.fountain.model.Topic;
+import com.scalpels.fountain.entity.Topic;
 import org.springframework.data.domain.Pageable;
 
 public interface TopicService {

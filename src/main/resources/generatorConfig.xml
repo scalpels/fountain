@@ -23,7 +23,7 @@
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
 
-		<javaModelGenerator targetPackage="${modelPackage}"
+		<javaModelGenerator targetPackage="${entityPackage}"
 							targetProject="src/main/java">
 			<property name="enableSubPackages" value="true" />
 			<property name="trimStrings" value="true" />
@@ -43,10 +43,8 @@
 		<table tableName="configuration" domainObjectName="Configuration" selectByExampleQueryId="true">
 			<generatedKey column="id" sqlStatement="MySql" identity="true" />
 		</table>
-		<!--
 		<table tableName="topic" domainObjectName="Topic" selectByExampleQueryId="true">
 			<generatedKey column="id" sqlStatement="MySql" identity="true" />
 		</table>
-		-->
 	</context>
 </generatorConfiguration>

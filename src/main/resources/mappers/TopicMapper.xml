@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.scalpels.fountain.mapper.ConfigurationMapper">
-  <resultMap id="BaseResultMap" type="com.scalpels.fountain.model.Configuration">
+<mapper namespace="com.scalpels.fountain.mapper.TopicMapper">
+  <resultMap id="BaseResultMap" type="com.scalpels.fountain.entity.Topic">
     <id column="id" jdbcType="BIGINT" property="id" />
     <result column="title" jdbcType="VARCHAR" property="title" />
     <result column="description" jdbcType="VARCHAR" property="description" />
@@ -71,14 +71,14 @@
   <sql id="Base_Column_List">
     id, title, description, created_by, created_on, last_modified_by, last_modified_on
   </sql>
-  <select id="selectByExample" parameterType="com.scalpels.fountain.model.ConfigurationExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.scalpels.fountain.entity.TopicExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from configuration
+    from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -89,35 +89,35 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from configuration
+    from topic
     where id = #{id,jdbcType=BIGINT}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
-    delete from configuration
+    delete from topic
     where id = #{id,jdbcType=BIGINT}
   </delete>
-  <delete id="deleteByExample" parameterType="com.scalpels.fountain.model.ConfigurationExample">
-    delete from configuration
+  <delete id="deleteByExample" parameterType="com.scalpels.fountain.entity.TopicExample">
+    delete from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.scalpels.fountain.model.Configuration">
+  <insert id="insert" parameterType="com.scalpels.fountain.entity.Topic">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into configuration (title, description, created_by, 
+    insert into topic (title, description, created_by, 
       created_on, last_modified_by, last_modified_on
       )
     values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
       #{createdOn,jdbcType=TIMESTAMP}, #{lastModifiedBy,jdbcType=VARCHAR}, #{lastModifiedOn,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.scalpels.fountain.model.Configuration">
+  <insert id="insertSelective" parameterType="com.scalpels.fountain.entity.Topic">
     <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
       SELECT LAST_INSERT_ID()
     </selectKey>
-    insert into configuration
+    insert into topic
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="title != null">
         title,
@@ -159,14 +159,14 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.scalpels.fountain.model.ConfigurationExample" resultType="java.lang.Long">
-    select count(*) from configuration
+  <select id="countByExample" parameterType="com.scalpels.fountain.entity.TopicExample" resultType="java.lang.Long">
+    select count(*) from topic
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update configuration
+    update topic
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=BIGINT},
@@ -195,7 +195,7 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update configuration
+    update topic
     set id = #{record.id,jdbcType=BIGINT},
       title = #{record.title,jdbcType=VARCHAR},
       description = #{record.description,jdbcType=VARCHAR},
@@ -207,8 +207,8 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.scalpels.fountain.model.Configuration">
-    update configuration
+  <update id="updateByPrimaryKeySelective" parameterType="com.scalpels.fountain.entity.Topic">
+    update topic
     <set>
       <if test="title != null">
         title = #{title,jdbcType=VARCHAR},
@@ -231,8 +231,8 @@
     </set>
     where id = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.scalpels.fountain.model.Configuration">
-    update configuration
+  <update id="updateByPrimaryKey" parameterType="com.scalpels.fountain.entity.Topic">
+    update topic
     set title = #{title,jdbcType=VARCHAR},
       description = #{description,jdbcType=VARCHAR},
       created_by = #{createdBy,jdbcType=VARCHAR},

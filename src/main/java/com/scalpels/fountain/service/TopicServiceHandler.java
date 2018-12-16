@@ -1,9 +1,9 @@
 package com.scalpels.fountain.service;
 
 import com.github.pagehelper.PageHelper;
+import com.scalpels.fountain.entity.Topic;
+import com.scalpels.fountain.entity.TopicExample;
 import com.scalpels.fountain.mapper.TopicMapper;
-import com.scalpels.fountain.model.Topic;
-import com.scalpels.fountain.model.TopicExample;
 import com.scalpels.fountain.util.MybatisOrderByClauseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

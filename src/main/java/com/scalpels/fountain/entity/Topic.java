@@ -1,8 +1,8 @@
-package com.scalpels.fountain.model;
+package com.scalpels.fountain.entity;
 
 import java.util.Date;
 
-public class Configuration {
+public class Topic {
     private Long id;
 
     private String title;

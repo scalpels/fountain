@@ -1,17 +1,17 @@
-package com.scalpels.fountain.model;
+package com.scalpels.fountain.entity;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class TopicExample {
+public class ConfigurationExample {
     protected String orderByClause;
 
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
 
-    public TopicExample() {
+    public ConfigurationExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
