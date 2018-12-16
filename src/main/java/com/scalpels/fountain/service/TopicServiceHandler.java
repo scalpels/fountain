@@ -39,6 +39,7 @@ public class TopicServiceHandler implements TopicService {
 		MybatisOrderByClauseUtil.generateOrderByClause(pageable.getSort()).ifPresent(orderByClause -> {
 			example.setOrderByClause(orderByClause);
 		});
+		example.createCriteria().andConditionEqualTo("title","Security Network");
 		return topicMapper.selectByExample(example);
 	}
 
