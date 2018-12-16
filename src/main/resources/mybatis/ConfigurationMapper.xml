@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.scalpels.fountain.mapper.ConfigurationMapper">
+  <resultMap id="BaseResultMap" type="com.scalpels.fountain.model.Configuration">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="created_by" jdbcType="VARCHAR" property="createdBy" />
+    <result column="created_on" jdbcType="TIMESTAMP" property="createdOn" />
+    <result column="last_modified_by" jdbcType="VARCHAR" property="lastModifiedBy" />
+    <result column="last_modified_on" jdbcType="TIMESTAMP" property="lastModifiedOn" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, title, description, created_by, created_on, last_modified_by, last_modified_on
+  </sql>
+  <select id="selectByExample" parameterType="com.scalpels.fountain.model.ConfigurationExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    'true' as QUERYID,
+    <include refid="Base_Column_List" />
+    from configuration
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from configuration
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from configuration
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.scalpels.fountain.model.ConfigurationExample">
+    delete from configuration
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.scalpels.fountain.model.Configuration">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into configuration (title, description, created_by, 
+      created_on, last_modified_by, last_modified_on
+      )
+    values (#{title,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, #{createdBy,jdbcType=VARCHAR}, 
+      #{createdOn,jdbcType=TIMESTAMP}, #{lastModifiedBy,jdbcType=VARCHAR}, #{lastModifiedOn,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.scalpels.fountain.model.Configuration">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into configuration
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="createdBy != null">
+        created_by,
+      </if>
+      <if test="createdOn != null">
+        created_on,
+      </if>
+      <if test="lastModifiedBy != null">
+        last_modified_by,
+      </if>
+      <if test="lastModifiedOn != null">
+        last_modified_on,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdOn != null">
+        #{createdOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null">
+        #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedOn != null">
+        #{lastModifiedOn,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.scalpels.fountain.model.ConfigurationExample" resultType="java.lang.Long">
+    select count(*) from configuration
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update configuration
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdBy != null">
+        created_by = #{record.createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.createdOn != null">
+        created_on = #{record.createdOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.lastModifiedBy != null">
+        last_modified_by = #{record.lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastModifiedOn != null">
+        last_modified_on = #{record.lastModifiedOn,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update configuration
+    set id = #{record.id,jdbcType=BIGINT},
+      title = #{record.title,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      created_by = #{record.createdBy,jdbcType=VARCHAR},
+      created_on = #{record.createdOn,jdbcType=TIMESTAMP},
+      last_modified_by = #{record.lastModifiedBy,jdbcType=VARCHAR},
+      last_modified_on = #{record.lastModifiedOn,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.scalpels.fountain.model.Configuration">
+    update configuration
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="createdBy != null">
+        created_by = #{createdBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createdOn != null">
+        created_on = #{createdOn,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastModifiedBy != null">
+        last_modified_by = #{lastModifiedBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastModifiedOn != null">
+        last_modified_on = #{lastModifiedOn,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.scalpels.fountain.model.Configuration">
+    update configuration
+    set title = #{title,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      created_by = #{createdBy,jdbcType=VARCHAR},
+      created_on = #{createdOn,jdbcType=TIMESTAMP},
+      last_modified_by = #{lastModifiedBy,jdbcType=VARCHAR},
+      last_modified_on = #{lastModifiedOn,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
