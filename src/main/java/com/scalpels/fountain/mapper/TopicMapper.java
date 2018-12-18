@@ -1,10 +1,8 @@
 package com.scalpels.fountain.mapper;
 
 import com.scalpels.fountain.entity.Topic;
-
-import java.util.List;
-
 import com.scalpels.fountain.entity.TopicExample;
+import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 public interface TopicMapper {

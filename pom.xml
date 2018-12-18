@@ -28,6 +28,7 @@
 		<mybatis-pagehelper.version>1.2.10</mybatis-pagehelper.version>
 		<mysql-driver.version>8.0.13</mysql-driver.version>
 		<lombok.version>1.18.4</lombok.version>
+		<butterfly.version>1.0-SNAPSHOT</butterfly.version>
 	</properties>
 
 	<dependencies>
@@ -131,12 +132,19 @@
 				<version>${mybatis-generator.version}</version>
 				<configuration>
 					<overwrite>true</overwrite>
+					<verbose>true</verbose>
 				</configuration>
 				<dependencies>
 					<dependency>
 						<groupId>mysql</groupId>
 						<artifactId>mysql-connector-java</artifactId>
 						<version>${mysql-driver.version}</version>
+					</dependency>
+
+					<dependency>
+						<groupId>com.sevenup.butterfly</groupId>
+						<artifactId>butterfly</artifactId>
+						<version>${butterfly.version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
