@@ -4,7 +4,7 @@
 <generatorConfiguration>
 	<properties resource="generatorConfig.properties"/>
 
-	<!--<classPathEntry location="${classPath}" />-->
+	<classPathEntry location="${classPath}" />
 
 	<context id="mysql" targetRuntime="MyBatis3">
 
