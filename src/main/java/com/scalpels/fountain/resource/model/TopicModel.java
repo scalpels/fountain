@@ -1,4 +1,4 @@
-package com.scalpels.fountain.resource.entity;
+package com.scalpels.fountain.resource.model;
 
 import java.util.Date;
 
@@ -9,7 +9,7 @@ import org.hibernate.validator.constraints.NotBlank;
 
 @Getter
 @Setter
-public class TopicEntity {
+public class TopicModel {
 	private Long id;
 
 	@NotBlank

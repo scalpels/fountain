@@ -1,8 +1,7 @@
 package com.scalpels.fountain.entity;
 
-import com.scalpels.fountain.basic.Criteria;
-
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TopicExample {
@@ -11,6 +10,20 @@ public class TopicExample {
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
+
+    public static final String id = "id";
+
+    public static final String title = "title";
+
+    public static final String description = "description";
+
+    public static final String createdBy = "created_by";
+
+    public static final String createdOn = "created_on";
+
+    public static final String lastModifiedBy = "last_modified_by";
+
+    public static final String lastModifiedOn = "last_modified_on";
 
     public TopicExample() {
         oredCriteria = new ArrayList<Criteria>();
@@ -64,5 +77,4 @@ public class TopicExample {
         orderByClause = null;
         distinct = false;
     }
-
 }

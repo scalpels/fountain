@@ -1,7 +1,7 @@
 package com.scalpels.fountain.resource;
 
 import com.scalpels.fountain.entity.Topic;
-import com.scalpels.fountain.resource.entity.TopicEntity;
+import com.scalpels.fountain.resource.model.TopicModel;
 import com.scalpels.fountain.service.TopicService;
 import com.scalpels.fountain.util.BeanMapper;
 import org.slf4j.Logger;
@@ -45,17 +45,17 @@ public class TopicController {
 	}
 	@Secured("ROLE_USER")
 	@PostMapping
-	public TopicEntity createTopic(@Valid @RequestBody TopicEntity topicEntity,Principal principal) {
+	public TopicModel createTopic(@Valid @RequestBody TopicModel topicEntity, Principal principal) {
 		logger.info("principal information : {}",principal.getName());
 		topicEntity.setCreatedBy(principal.getName());
 		Topic topic = beanMapper.map(topicEntity,Topic.class);
-		return beanMapper.map(topicService.createTopic(topic), TopicEntity.class);
+		return beanMapper.map(topicService.createTopic(topic), TopicModel.class);
 	}
 
 	@GetMapping(value = "/{id}")
-	public TopicEntity getTopicById(@PathVariable Long id) {
+	public TopicModel getTopicById(@PathVariable Long id) {
 		logger.info("get topic id: {}",id);
-		return beanMapper.map(topicService.getTopicById(id),TopicEntity.class);
+		return beanMapper.map(topicService.getTopicById(id), TopicModel.class);
 	}
 
 	@PutMapping(value = "/{id}")

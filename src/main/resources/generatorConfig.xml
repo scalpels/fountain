@@ -46,8 +46,8 @@
 		<table tableName="configuration" domainObjectName="Configuration" selectByExampleQueryId="true">
 			<generatedKey column="id" sqlStatement="MySql" identity="true" />
 		</table>
-		<!--<table tableName="topic" domainObjectName="Topic" selectByExampleQueryId="true">-->
-			<!--<generatedKey column="id" sqlStatement="MySql" identity="true" />-->
-		<!--</table>-->
+		<table tableName="topic" domainObjectName="Topic" selectByExampleQueryId="true">
+			<generatedKey column="id" sqlStatement="MySql" identity="true" />
+		</table>
 	</context>
 </generatorConfiguration>
