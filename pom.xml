@@ -142,7 +142,7 @@
 					</dependency>
 
 					<dependency>
-						<groupId>com.sevenup.butterfly</groupId>
+						<groupId>com.sevenup</groupId>
 						<artifactId>butterfly</artifactId>
 						<version>${butterfly.version}</version>
 					</dependency>
